@@ -6,6 +6,7 @@ mib:
     common:
       enabled: true
 
+
 spring:
   profiles:
     active: dev
