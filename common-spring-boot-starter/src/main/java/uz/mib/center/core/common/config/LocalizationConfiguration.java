@@ -31,6 +31,25 @@ public class LocalizationConfiguration {
         return source;
     }
 
+    /**
+     * Instantiate the appropriate locale resolution strategy
+     *
+     * @return locale resolver
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public LocaleResolver localeResolver() {
+        //for this demo, we'll use a SessionLocaleResolver object
+        //as the name implies, it stores locale info in the session
+        AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
+
+        //default to US locale
+        resolver.setDefaultLocale(new Locale(properties.getDefaultLocale()));
+
+        //get out
+        return resolver;
+    }
+
 
     /**
      * This interceptor allows visitors to change the locale on a per-request basis
