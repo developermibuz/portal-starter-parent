@@ -1,10 +1,11 @@
 server:
   port: 8029
 
-mib:
-  core:
-    common:
-      enabled: true
+#mib:
+#  core:
+#    common:
+#      enabled: true
+
 
 
 spring:
@@ -16,4 +17,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://10.100.10.44:8999/auth/realms/spring-micro-main
+  web:
+    locale-resolver: accept_header
+    locale: uz
 

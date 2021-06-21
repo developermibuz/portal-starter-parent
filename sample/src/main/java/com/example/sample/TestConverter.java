@@ -1,14 +1,14 @@
 package com.example.sample;
 
-import org.springframework.security.oauth2.jwt.Jwt;
+//import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
-import uz.mib.center.core.security.model.SessionEmployee;
-import uz.mib.center.core.security.provider.AuthenticationConverter;
+//import uz.mib.center.core.security.model.SessionEmployee;
+//import uz.mib.center.core.security.provider.AuthenticationConverter;
 
-@Component
-public class TestConverter implements AuthenticationConverter {
+//@Component
+public class TestConverter /*implements AuthenticationConverter*/ {
 
-    @Override
+   /* @Override
     public SessionEmployee convert(Jwt source) {
         return SessionEmployee.builder()
                 .jwt(source)
@@ -17,5 +17,5 @@ public class TestConverter implements AuthenticationConverter {
                 .userId(null)
                 .employee(null)
                 .build();
-    }
+    }*/
 }

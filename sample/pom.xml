@@ -21,11 +21,11 @@
             <artifactId>common-spring-boot-starter</artifactId>
             <version>0.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>uz.mib.center.core</groupId>
-            <artifactId>security-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>uz.mib.center.core</groupId>-->
+<!--            <artifactId>security-spring-boot-starter</artifactId>-->
+<!--            <version>0.0.1</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -8,6 +8,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class LocaleProperties {
 
     private String resourceBaseName = "i18n/messages";
-    private String defaultLocale = "uz";
-    private String defaultParamName = "locale";
 }

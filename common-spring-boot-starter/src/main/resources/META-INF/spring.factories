@@ -1,6 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   uz.mib.center.core.common.config.CommonAutoConfiguration, \
   uz.mib.center.core.common.config.AppMvcConfiguration, \
-  uz.mib.center.core.common.config.LocalizationConfiguration, \
+  uz.mib.center.core.common.config.ResourceBundleConfiguration, \
   uz.mib.center.core.common.config.ErrorConfiguration
 
