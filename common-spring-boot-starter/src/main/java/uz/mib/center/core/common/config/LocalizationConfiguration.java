@@ -20,7 +20,7 @@ import java.util.Locale;
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(LocaleProperties.class)
 @RequiredArgsConstructor
-//@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 9)
+@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 8)
 public class LocalizationConfiguration {
 
     private final LocaleProperties properties;
