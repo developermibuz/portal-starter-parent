@@ -4,12 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.*;
+import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.Ordered;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -20,7 +22,6 @@ import java.util.Locale;
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(LocaleProperties.class)
 @RequiredArgsConstructor
-@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 8)
 public class LocalizationConfiguration {
 
     private final LocaleProperties properties;
@@ -45,7 +46,7 @@ public class LocalizationConfiguration {
         AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
 
         //default to US locale
-        resolver.setDefaultLocale(new Locale(properties.getDefaultLocale()));
+        resolver.setDefaultLocale(new Locale("uz"));
 
         //get out
         return resolver;
