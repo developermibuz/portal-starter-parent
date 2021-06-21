@@ -20,4 +20,10 @@ public class CommonRestControlAdvice {
     public ApiError bindException(BindException ex, WebRequest request) {
         return errorService.makeError(101, "Required data topilmadi", ex, request);
     }
+
+    @ExceptionHandler(value = {CustomEx.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ApiError bindException(CustomEx ex, WebRequest request) {
+        return errorService.makeError(101, "Custom data topilmadi", ex, request);
+    }
 }

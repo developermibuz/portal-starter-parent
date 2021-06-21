@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  uz.mib.center.core.security.config.ResourceServerSecurityConfiguration
+

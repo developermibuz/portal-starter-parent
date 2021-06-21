@@ -32,7 +32,6 @@ public class LocalizationConfiguration {
     }
 
 
-
     /**
      * This interceptor allows visitors to change the locale on a per-request basis
      *

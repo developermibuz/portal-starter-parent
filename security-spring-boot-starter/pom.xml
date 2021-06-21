@@ -7,7 +7,7 @@
         <artifactId>portal-starter-parent</artifactId>
         <version>0.0.1</version>
     </parent>
-    <artifactId>common-spring-boot-starter</artifactId>
+    <artifactId>security-spring-boot-starter</artifactId>
 
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
@@ -17,10 +17,17 @@
     </properties>
 
     <dependencies>
-        <!-- Spring MVC -->
+        <!-- Spring OAuth2 Resource Server -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+
+        <!-- Embedded Tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Autoconfigure -->
@@ -35,8 +42,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
-
 
 </project>

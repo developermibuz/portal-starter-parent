@@ -19,6 +19,7 @@
 
     <modules>
         <module>common-spring-boot-starter</module>
+        <module>security-spring-boot-starter</module>
         <module>sample</module>
     </modules>
 

@@ -6,9 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import uz.mib.center.core.common.error.CommonRestControlAdvice;
 import uz.mib.center.core.common.properties.CommonProperties;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(CommonProperties.class)
 @ConditionalOnProperty(prefix = "mib.core.common", value = "enabled", havingValue = "true")
 public class CommonAutoConfiguration {

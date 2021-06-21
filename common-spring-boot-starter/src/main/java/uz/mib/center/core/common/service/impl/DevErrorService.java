@@ -18,7 +18,7 @@ public class DevErrorService implements ErrorService {
                 .code(code)
                 .message(message)
                 .timestamp(LocalDateTime.now())
-                .address(request.getContextPath())
+                .address(request.getDescription(false))
                 .stacktrace(t.getMessage())
                 .build();
     }
