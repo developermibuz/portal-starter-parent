@@ -39,8 +39,7 @@ public class LocalizationConfiguration {
      * @return locale resolver
      */
     @Bean
-    @Primary
-    public LocaleResolver customLocaleResolver() {
+    public LocaleResolver localeResolver() {
         //for this demo, we'll use a SessionLocaleResolver object
         //as the name implies, it stores locale info in the session
         AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
