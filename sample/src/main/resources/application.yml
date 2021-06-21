@@ -1,0 +1,7 @@
+server:
+  port: 8029
+
+mib:
+  core:
+    common:
+      enabled: true

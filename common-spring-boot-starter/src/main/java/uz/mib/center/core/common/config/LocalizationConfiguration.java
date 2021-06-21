@@ -1,9 +1,13 @@
 package uz.mib.center.core.common.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
@@ -12,7 +16,7 @@ import uz.mib.center.core.common.properties.LocaleProperties;
 
 import java.util.Locale;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(LocaleProperties.class)
 @RequiredArgsConstructor
 public class LocalizationConfiguration {
@@ -33,6 +37,7 @@ public class LocalizationConfiguration {
      * @return locale resolver
      */
     @Bean
+    @ConditionalOnMissingBean
     public LocaleResolver localeResolver() {
         //for this demo, we'll use a SessionLocaleResolver object
         //as the name implies, it stores locale info in the session

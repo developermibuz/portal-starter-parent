@@ -7,5 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("mib.core.common")
 public class CommonProperties {
 
+    private String enabled;
 
 }
