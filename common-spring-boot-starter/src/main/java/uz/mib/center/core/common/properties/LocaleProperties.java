@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties("mib.core.common.locale")
+@ConfigurationProperties("mib.common.locale")
 public class LocaleProperties {
 
     private String resourceBaseName = "i18n/messages";

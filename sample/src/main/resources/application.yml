@@ -21,3 +21,13 @@ spring:
     locale-resolver: accept_header
     locale: uz
 
+mib.common:
+  swagger:
+    enabled: true
+    title: "Api Documentation"
+    version: "0.0.1"
+    ignored-parameter-types:
+      - javax.servlet.http.HttpServletRequest
+      - java.security.Principal
+      - com.example.sample.controller.TestController.Query
+#      - org.springframework.security.core.Authentication

@@ -46,13 +46,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- SpringFox Swagger -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-boot-starter</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
-
             <!-- Logstash -->
             <dependency>
                 <groupId>net.logstash.logback</groupId>

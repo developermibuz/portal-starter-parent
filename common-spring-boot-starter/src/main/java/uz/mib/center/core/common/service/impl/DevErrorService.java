@@ -1,25 +1,27 @@
 package uz.mib.center.core.common.service.impl;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import uz.mib.center.core.common.error.ApiError;
 import uz.mib.center.core.common.service.ErrorService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
 public class DevErrorService implements ErrorService {
 
     @Override
     public ApiError makeError(int code, String message, Throwable t, WebRequest request) {
+        val servlet = ((ServletWebRequest) request).getNativeRequest(HttpServletRequest.class);
+        val address = servlet == null ? request.getDescription(false) : servlet.getRequestURL();
         return DevelopmentError.builder()
                 .code(code)
                 .message(message)
                 .timestamp(LocalDateTime.now())
-                .address(request.getDescription(false))
-                .stacktrace(t.getMessage())
+                .address(address.toString())
+                .stacktrace(ExceptionUtils.getStackTrace(t))
                 .build();
     }
 
