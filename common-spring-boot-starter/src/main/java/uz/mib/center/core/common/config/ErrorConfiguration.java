@@ -14,13 +14,13 @@ import uz.mib.center.core.common.service.impl.ProdErrorService;
 public class ErrorConfiguration {
 
     @Bean
-    @Profile("dev")
+    @Profile("!prod")
     ErrorService devErrorService() {
         return new DevErrorService();
     }
 
     @Bean
-    @Profile("!dev")
+    @Profile("prod")
     ErrorService prodErrorService() {
         return new ProdErrorService();
     }
