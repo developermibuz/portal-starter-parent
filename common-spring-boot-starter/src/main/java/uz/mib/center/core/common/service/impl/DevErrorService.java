@@ -1,6 +1,7 @@
 package uz.mib.center.core.common.service.impl;
 
 import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -26,7 +27,7 @@ public class DevErrorService implements ErrorService {
                 .code(code)
                 .message(message)
                 .timestamp(LocalDateTime.now())
-                .sysMessage(sysMessage)
+                .sysMessage(StringUtils.defaultIfBlank(sysMessage, message))
                 .address(address.toString())
                 .stacktrace(ExceptionUtils.getStackTrace(t))
                 .build();
