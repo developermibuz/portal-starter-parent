@@ -1,6 +1,7 @@
 package uz.mib.center.core.common.error;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,9 +9,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import uz.mib.center.core.common.error.exception.*;
+import uz.mib.center.core.common.model.ProcedureResult;
 import uz.mib.center.core.common.service.ErrorService;
 import uz.mib.center.core.common.service.IMessages;
 
+@Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
 public class CommonRestControlAdvice {
@@ -52,9 +55,11 @@ public class CommonRestControlAdvice {
         return errorService.makeError(104, "Required data topilmadi", ex, request);
     }
 
-    @ExceptionHandler(value = {CustomEx.class})
+    @ExceptionHandler(value = {AppProcedureException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ApiError bindException(CustomEx ex, WebRequest request) {
-        return errorService.makeError(105, "Custom data topilmadi", ex, request);
+    public ApiError bindException(AppProcedureException ex, WebRequest request) {
+        ProcedureResult result = ex.getResult();
+        log.error(result.getSysMsg(), ex);
+        return errorService.makeError(result.getResult(), result.getResMsg(), ex, request);
     }
 }
