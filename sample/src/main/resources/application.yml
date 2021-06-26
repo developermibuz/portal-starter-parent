@@ -11,6 +11,7 @@ server:
 spring:
   profiles:
     active: dev
+  main.allow-bean-definition-overriding: true
 
   security:
     oauth2:
