@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.val;
 import org.springframework.util.NumberUtils;
+import uz.mib.center.core.common.error.exception.AppProcedureException;
 import uz.mib.center.core.common.error.exception.AppSystemException;
 import uz.mib.center.core.common.utils.Utils;
 
@@ -40,7 +41,7 @@ public class ProcedureResult {
 
     public ProcedureResult validate() {
         if (isNotSuccess()){
-            throw new AppSystemException();
+            throw new AppProcedureException(this);
         }
         return this;
     }
