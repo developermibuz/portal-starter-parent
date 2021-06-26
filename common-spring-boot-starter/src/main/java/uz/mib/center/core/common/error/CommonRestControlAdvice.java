@@ -65,6 +65,6 @@ public class CommonRestControlAdvice {
     public ApiError bindException(AppProcedureException ex, NativeWebRequest request) {
         ProcedureResult result = ex.getResult();
         log.error(result.getSysMsg(), ex);
-        return errorService.makeError(result.getResult(), result.getResMsg(), ex, request);
+        return errorService.makeError(result.getResult(), result.getResMsg(), result.getSysMsg(), ex, request);
     }
 }
