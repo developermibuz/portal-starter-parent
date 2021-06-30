@@ -17,7 +17,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequestMapping
-public class TestController {
+public class SampleController {
 
     @GetMapping
     public String hello(@RequestParam Map<String, String> param) {

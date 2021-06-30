@@ -1,0 +1,6 @@
+package com.example.sample.db;
+
+import java.io.Serializable;
+
+public interface BaseEntity extends Serializable {
+}

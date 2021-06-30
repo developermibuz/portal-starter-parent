@@ -1,13 +1,6 @@
 server:
   port: 8029
 
-#mib:
-#  core:
-#    common:
-#      enabled: true
-
-
-
 spring:
   profiles:
     active: dev
@@ -22,6 +15,20 @@ spring:
     locale-resolver: accept_header
     locale: uz
 
+  ### DataSource
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@db.mib.uz:1521:mib1
+    username: dbdockeruser
+    password: dbdocker123
+
+### Mybatis
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations:
+    - classpath:mappers/*Mapper.xml
+    - classpath:mappers/crud/*Mapper.xml
+
 mib.common:
   swagger:
     enabled: true
@@ -30,5 +37,14 @@ mib.common:
     ignored-parameter-types:
       - javax.servlet.http.HttpServletRequest
       - java.security.Principal
-      - com.example.sample.controller.TestController.Query
+      - com.example.sample.controller.SampleController.Query
 #      - org.springframework.security.core.Authentication
+
+
+### Pages plugin
+pagehelper:
+  helper-dialect: oracle
+  auto-runtime-dialect: true
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql

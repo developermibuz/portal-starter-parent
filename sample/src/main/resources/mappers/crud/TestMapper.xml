@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress SqlConstantCondition -->
+<mapper namespace="com.example.sample.db.mapper.crud.TestMapper">
+
+    <select id="findByPage" resultType="TestEntity">
+        SELECT DECODE(#{locale}, 'uk', a.NAME_UK, 'uz', a.NAME_UZ, a.NAME_RU) AS name
+             , a.*
+        FROM TESTCRUD a
+        WHERE 1 = 1
+        <if test="filter.pageSize != null">
+            AND LOWER(a.NAME_UZ) LIKE LOWER('%' || #{filter.pageSize} || '%')
+        </if>
+    </select>
+
+    <select id="findById" resultType="TestEntity">
+        SELECT DECODE(#{locale}, 'uk', a.NAME_UK, 'uz', a.NAME_UZ, a.NAME_RU) AS name
+             , a.*
+        FROM TESTCRUD a
+        WHERE a.ID = #{id}
+    </select>
+
+    <insert id="insertEntity" parameterType="TestEntity">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            select TESTCRUD_SEQ.nextval as id from dual
+        </selectKey>
+        INSERT INTO TESTCRUD ( ID
+                             , NAME_RU
+                             , NAME_UK
+                             , NAME_UZ
+                             , ORDERING)
+        VALUES ( #{id, jdbcType=NUMERIC}
+               , #{name_ru, jdbcType=VARCHAR}
+               , #{name_uk, jdbcType=VARCHAR}
+               , #{name_uz, jdbcType=VARCHAR}
+               , #{ordering, jdbcType=NUMERIC})
+    </insert>
+
+    <update id="updateEntity" parameterType="TestEntity">
+        UPDATE TESTCRUD
+        SET NAME_RU  = #{name_ru, jdbcType=VARCHAR},
+            NAME_UK  = #{name_uk, jdbcType=VARCHAR},
+            NAME_UZ  = #{name_uz, jdbcType=VARCHAR},
+            ORDERING = #{ordering, jdbcType=NUMERIC}
+        WHERE ID = #{id, jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateEntityStandby" parameterType="TestEntity" databaseId="">
+        UPDATE TESTCRUD
+        SET NAME_RU  = #{name_ru, jdbcType=VARCHAR},
+        NAME_UK  = #{name_uk, jdbcType=VARCHAR},
+        NAME_UZ  = #{name_uz, jdbcType=VARCHAR},
+        ORDERING = #{ordering, jdbcType=NUMERIC}
+        WHERE ID = #{id, jdbcType=NUMERIC}
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        DELETE
+        FROM TESTCRUD
+        WHERE ID = #{id, jdbcType=NUMERIC}
+    </delete>
+
+</mapper>
