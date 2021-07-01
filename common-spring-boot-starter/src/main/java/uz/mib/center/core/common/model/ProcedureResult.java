@@ -12,6 +12,7 @@ import java.util.Map;
 @Data
 public class ProcedureResult {
 
+    private Long procedureId;
     private Integer result;
     private String resMsg;
 
@@ -20,6 +21,7 @@ public class ProcedureResult {
 
     public static ProcedureResult convert(Map<String, Object> m) {
         val result = new ProcedureResult();
+        result.setProcedureId(ConvertUtils.toLong(m.get("p_new_id")));
         result.setResult(ConvertUtils.toInt(m.get("p_result")));
         result.setResMsg(ConvertUtils.toString(m.get("p_res_msg")));
         result.setSysMsg(ConvertUtils.toString(m.get("p_sys_msg")));
