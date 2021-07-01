@@ -60,6 +60,13 @@ public class CommonRestControlAdvice {
         return errorService.makeError(104, "Required data topilmadi", ex, request);
     }
 
+    @ExceptionHandler(value = {CustomException.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ApiError bindException(CustomException ex, NativeWebRequest request) {
+        log.error(ex.getMessage(), ex);
+        return errorService.makeError(105, ex.getMessage(), ex, request);
+    }
+
     @ExceptionHandler(value = {AppProcedureException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ApiError bindException(AppProcedureException ex, NativeWebRequest request) {
